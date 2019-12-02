@@ -56,12 +56,30 @@ Route::get('/galeria', 'MiControlador@galeria');
 
 Route::get("/leer", function(){
 
-    $articulos=App\Articulo::all();
+    // $articulos=App\Articulo::all();
 
-    foreach ($articulos as $articulo) {
+    // foreach ($articulos as $articulo) {
         
-        echo "Nombre: " . $articulo->Nombre_Articulo . " Precio: " .$articulo->Precio . "<br>";
+    //     echo "Nombre: " . $articulo->Nombre_Articulo . " Precio: " .$articulo->Precio . "<br>";
 
-    }
+    // }
+
+    $articulos = App\Articulo::where("seccion","Ceramica")->min("precio");
+
+    return $articulos;
+
+});
+
+Route::get("/insertar", function(){
+
+    $articulos = new App\Articulo;
+
+    $articulos->Nombre_Articulo = "Pantalones";
+    $articulos->Precio = 60;
+    $articulos->pais_origen = "España";
+    $articulos->observaciones = "Lavados a la piedra";
+    $articulos->seccion = "Confeccion";
+    $articulos->save();
+
 
 });
