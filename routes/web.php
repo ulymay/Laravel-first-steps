@@ -83,3 +83,31 @@ Route::get("/insertar", function(){
 
 
 });
+
+Route::get("/actualizar", function(){
+
+    // $articulos = App\Articulo::find(7);
+
+    // $articulos->Nombre_Articulo = "Pantalones";
+    // $articulos->Precio = 90;
+    // $articulos->pais_origen = "España";
+    // $articulos->observaciones = "Lavados a la piedra";
+    // $articulos->seccion = "Confeccion";
+    // $articulos->save();
+
+    App\Articulo::where("seccion","Menaje")->where("pais_origen","España")->update(["precio"=>90]);
+
+
+});
+
+Route::get("/borrar", function(){
+
+    App\Articulo::where("seccion","Ferreteria")->delete();
+
+});
+
+Route::get("/insercionvarios", function(){
+
+    App\Articulo::create(["Nombre_Articulo"=>"Impresora","Precio"=>50,"pais_origen"=>"Colombia","observaciones"=>"Nada que decir","seccion"=>"Informatica"]);
+
+});
