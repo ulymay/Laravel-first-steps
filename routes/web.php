@@ -64,9 +64,13 @@ Route::get("/leer", function(){
 
     // }
 
-    $articulos = App\Articulo::where("seccion","Ceramica")->min("precio");
+    // $articulos = App\Articulo::where("id",4)->get();
 
-    return $articulos;
+    $articulos = App\Articulo::withTrashed()
+    ->where('id', 4)
+    ->restore();
+
+    // return $articulos;
 
 });
 
@@ -109,5 +113,19 @@ Route::get("/borrar", function(){
 Route::get("/insercionvarios", function(){
 
     App\Articulo::create(["Nombre_Articulo"=>"Impresora","Precio"=>50,"pais_origen"=>"Colombia","observaciones"=>"Nada que decir","seccion"=>"Informatica"]);
+
+});
+
+Route::get("/softdelete", function(){
+
+    App\Articulo::find(4)->delete();
+
+});
+
+Route::get("/harddelete", function(){
+
+    $articulos = App\Articulo::withTrashed()
+    ->where('id', 4)
+    ->forceDelete();
 
 });
