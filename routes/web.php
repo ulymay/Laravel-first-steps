@@ -1,5 +1,9 @@
 <?php
 
+use App\Articulo;
+
+use App\Cliente;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -128,4 +132,9 @@ Route::get("/harddelete", function(){
     ->where('id', 4)
     ->forceDelete();
 
+});
+
+Route::get("/cliente/{id}/articulo", function($id){
+
+    return Cliente::find($id)->articulo;
 });
