@@ -156,3 +156,15 @@ Route::get("/articulos", function(){
     }
 
 });
+
+Route::get("/cliente/{id}/perfil", function($id){
+
+    $cliente=Cliente::find($id);
+
+    foreach ($cliente->perfils as $perfil) {
+        
+        return $perfil->nombre;
+
+    }
+
+});

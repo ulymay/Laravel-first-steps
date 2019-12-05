@@ -18,4 +18,10 @@ class Cliente extends Model
     {
         return $this->hasMany('App\Articulo');
     }
+
+    public function perfils(){
+
+        return $this->belongsToMany("App\Perfil");
+
+    }
 }
