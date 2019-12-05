@@ -20,13 +20,19 @@ class Articulo extends Model
         
     // ];
 
-    use SoftDeletes;
+    // use SoftDeletes;
 
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
-    public function cliente(){
+    // public function cliente(){
 
-        return $this->belongsTo('App\Cliente');
+    //     return $this->belongsTo('App\Cliente');
+
+    // }
+
+    public function calificaciones(){
+
+        return $this->morphMany('App\Calificaciones', 'calificacion');
 
     }
 

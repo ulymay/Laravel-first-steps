@@ -8,20 +8,26 @@ class Cliente extends Model
 {
     //
 
-    public function articulo(){
+    // public function articulo(){
 
-        return $this->hasOne('App\Articulo');
+    //     return $this->hasOne('App\Articulo');
 
-    }
+    // }
 
-    public function articulos()
-    {
-        return $this->hasMany('App\Articulo');
-    }
+    // public function articulos()
+    // {
+    //     return $this->hasMany('App\Articulo');
+    // }
 
-    public function perfils(){
+    // public function perfils(){
 
-        return $this->belongsToMany("App\Perfil");
+    //     return $this->belongsToMany("App\Perfil");
+
+    // }
+
+    public function calificaciones(){
+
+        return $this->morphMany('App\Calificaciones', 'calificacion');
 
     }
 }

@@ -168,3 +168,13 @@ Route::get("/cliente/{id}/perfil", function($id){
     }
 
 });
+
+Route::get('/calificaciones', function(){
+
+    $articulo=Articulo::find(5);
+
+    foreach ($articulo->calificaciones as $calificacion) {
+        return $calificacion->calificacion;
+    }
+
+});
